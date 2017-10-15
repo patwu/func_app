@@ -19,6 +19,7 @@ class MLP(object):
         h=tf.contrib.layers.fully_connected(x,self.n_hidden,scope='layer1') 
         h=tf.contrib.layers.fully_connected(h,self.n_hidden,scope='layer2') 
         h=tf.contrib.layers.fully_connected(h,self.n_hidden,scope='layer3') 
+        h=tf.contrib.layers.fully_connected(h,self.n_hidden,scope='layer4') 
         h=tf.contrib.layers.fully_connected(h,self.n_output,scope='output',activation_fn=None)
         tf.get_variable_scope().reuse_variables()
         return h
