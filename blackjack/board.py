@@ -27,12 +27,15 @@ class Board(object):
         return c
 
 class Hand(object):
-    def __init__(self,ace=True):
+    def __init__(self,ace=False):
         self.hand=[]
         self.ace=ace
 
     def __repr__(self):
         return str(self.hand)
+
+    def length(self):
+        return len(self.hand)
 
     def score(self):
         s=0
