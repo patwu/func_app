@@ -34,9 +34,9 @@ def battle(player1,player2,n_time=1):
                         break
                     if h.score()==-1:
                         n_pass+=1
-                if h.length()>1:
-                    vp,vh,_=players[1-i]
-                    vp.play(c)
+                    if h.length()>1:
+                        vp,vh,_=players[1-i]
+                        vp.play(c)
                 else:
                     n_pass+=1
         if not valid:
