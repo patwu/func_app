@@ -7,9 +7,9 @@ np.set_printoptions(precision=3,linewidth=1000)
 n_ev=np.zeros([22,10],dtype=float)
 n_time=np.zeros([22,10],dtype=int)
 
-for _ in range(100000):
+for _ in range(100):
     b=board.Board()
-    h=board.Hand(ace=False)
+    h=board.Hand(ace=True)
     h.pick(b.draw())
     while h.score()>=0:
         s=h.score()
