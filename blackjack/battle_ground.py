@@ -10,17 +10,11 @@ def battle(player1,player2,n_time=1000):
 
     for r in range(n_time):
         if r%2==0:
-            players=[(player1(),Hand(True),[]),(player2(),Hand(True),[])]
+            players=[(player1(),Hand(True),['d']),(player2(),Hand(True),['d'])]
         else:
-            players=[(player2(),Hand(True),[]),(player1(),Hand(True),[])]
+            players=[(player2(),Hand(True),['d']),(player1(),Hand(True),['d'])]
 
         b=Board()
-
-        for (p,h,m) in players:
-            c=b.draw()
-            p.genmove(c)
-            h.pick(c)
-            m.append('d')
 
         n_pass=0
         while n_pass<2:
@@ -42,9 +36,10 @@ def battle(player1,player2,n_time=1000):
                     vp.play(c)
                 else:
                     n_pass+=1
-        print '------------------------round %d-------------------------------'%r
+        print '------------------------round %5d-------------------------------'%r
         print 'player1=%s\thand=%30s\tmove=%30s\tscore=%d'%(str(players[0][0]),players[0][1],str(players[0][2]),players[0][1].score())
         print 'player1=%s\thand=%30s\tmove=%30s\tscore=%d'%(str(players[1][0]),players[1][1],str(players[1][2]),players[1][1].score())
+        print '------------------------------------------------------------------\n\n'
         result = 1 if players[0][1].score()>players[1][1].score() else -1
         if r%2==1:
             result=-result
