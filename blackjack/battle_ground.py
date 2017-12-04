@@ -17,7 +17,8 @@ def battle(player1,player2,n_time=1000):
         b=Board()
 
         n_pass=0
-        while n_pass<2:
+        valid=True
+        while n_pass<2 and valid:
             n_pass=0
             for i in range(2):
                 p,h,m=players[i]
@@ -29,6 +30,8 @@ def battle(player1,player2,n_time=1000):
                         m.append(move) 
                     else:
                         print 'invalid move player:%s move:%s'%(str(p),move)
+                        valid=False
+                        break
                     if h.score()==-1:
                         n_pass+=1
 
@@ -36,6 +39,8 @@ def battle(player1,player2,n_time=1000):
                     vp.play(c)
                 else:
                     n_pass+=1
+        if not valid:
+            break
         print '------------------------round %5d-------------------------------'%r
         print 'player1=%s\thand=%30s\tmove=%30s\tscore=%d'%(str(players[0][0]),players[0][1],str(players[0][2]),players[0][1].score())
         print 'player1=%s\thand=%30s\tmove=%30s\tscore=%d'%(str(players[1][0]),players[1][1],str(players[1][2]),players[1][1].score())
