@@ -4,7 +4,7 @@ import argparse
 import sys
 
 
-def battle(player1,player2,n_time=1000):
+def battle(player1,player2,n_time=1):
 
     total_result=0
 
@@ -34,7 +34,7 @@ def battle(player1,player2,n_time=1000):
                         break
                     if h.score()==-1:
                         n_pass+=1
-
+                if h.length()>1:
                     vp,vh,_=players[1-i]
                     vp.play(c)
                 else:
