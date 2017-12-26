@@ -3,8 +3,13 @@ from board import Board,Hand
 import argparse
 import sys
 
+def boltzmann(ev):
+    x=ev-np.max(ev)
+    exp_x=np.exp(x/0.6)
+    dist=exp_x/np.sum(exp_x)
+    return np.random.choice(len(dist),1,p=dist)[0]
 
-def battle(player1,player2,n_time=1):
+def battle(player1,player2,n_time=10):
 
     total_result=0
 
@@ -43,9 +48,12 @@ def battle(player1,player2,n_time=1):
             break
         print '------------------------round %5d-------------------------------'%r
         print 'player1=%s\thand=%30s\tmove=%30s\tscore=%d'%(str(players[0][0]),players[0][1],str(players[0][2]),players[0][1].score())
-        print 'player1=%s\thand=%30s\tmove=%30s\tscore=%d'%(str(players[1][0]),players[1][1],str(players[1][2]),players[1][1].score())
+        print 'player2=%s\thand=%30s\tmove=%30s\tscore=%d'%(str(players[1][0]),players[1][1],str(players[1][2]),players[1][1].score())
         print '------------------------------------------------------------------\n\n'
-        result = 1 if players[0][1].score()>players[1][1].score() else -1
+        if players[0][1].score==players[1][1].score():
+            result=0
+        else:
+            result = 1 if players[0][1].score()>players[1][1].score() else -1
         if r%2==1:
             result=-result
         total_result+=result
